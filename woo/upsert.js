@@ -1,6 +1,6 @@
 import axios from "axios";
 import dotenv from "dotenv";
-import { getEbayUserClient } from "../ebay/token.js";
+import { getEbayUserClient } from "../ebay/client.js";
 import { withRetries } from "../utils/retry.js";
 import { DRY_RUN, EBAY_BASE } from "../utils/constants.js";
 

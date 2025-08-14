@@ -16,11 +16,21 @@ let appRefreshPromise = null;
 let userRefreshPromise = null;
 
 export async function refreshAppEbayToken() {
+	console.log("Client ID:", process.env.EBAY_CLIENT_ID);
+	console.log(
+		"Client Secret:",
+		process.env.EBAY_CLIENT_SECRET
+			? "***" + process.env.EBAY_CLIENT_SECRET.slice(-4)
+			: "MISSING"
+	);
+	console.log("EBAY_BASE:", EBAY_BASE);
 	if (appRefreshPromise) return appRefreshPromise;
 	appRefreshPromise = (async () => {
 		const url = `${EBAY_BASE}/identity/v1/oauth2/token`;
 		const auth = Buffer.from(
-			`${process.env.EBAY_CLIENT_ID}:${process.env.EBAY_CLIENT_SECRET}`
+			encodeURIComponent(process.env.EBAY_CLIENT_ID) +
+				":" +
+				encodeURIComponent(process.env.EBAY_CLIENT_SECRET)
 		).toString("base64");
 		const params = new URLSearchParams();
 		params.append("grant_type", "client_credentials");
@@ -55,11 +65,21 @@ export async function getAppEbayToken() {
 }
 
 export async function refreshEbayToken() {
+	console.log("Client ID:", process.env.EBAY_CLIENT_ID);
+	console.log(
+		"Client Secret:",
+		process.env.EBAY_CLIENT_SECRET
+			? "***" + process.env.EBAY_CLIENT_SECRET.slice(-4)
+			: "MISSING"
+	);
+	console.log("EBAY_BASE:", EBAY_BASE);
 	if (userRefreshPromise) return userRefreshPromise;
 	userRefreshPromise = (async () => {
 		const url = `${EBAY_BASE}/identity/v1/oauth2/token`;
 		const auth = Buffer.from(
-			`${process.env.EBAY_CLIENT_ID}:${process.env.EBAY_CLIENT_SECRET}`
+			encodeURIComponent(process.env.EBAY_CLIENT_ID) +
+				":" +
+				encodeURIComponent(process.env.EBAY_CLIENT_SECRET)
 		).toString("base64");
 		const params = new URLSearchParams();
 		params.append("grant_type", "refresh_token");

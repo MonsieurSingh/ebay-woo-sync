@@ -1,4 +1,4 @@
-import { getEbayAppClient } from "../ebay/token.js";
+import { getEbayAppClient } from "./client.js";
 import { withRetries } from "../utils/retry.js";
 import { EBAY_BASE, EBAY_MARKETPLACE_ID } from "../utils/constants.js";
 

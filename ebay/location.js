@@ -1,5 +1,5 @@
 import dotenv from "dotenv";
-import { getEbayUserClient } from "./token.js";
+import { getEbayUserClient } from "./client.js";
 import { withRetries } from "../utils/retry.js";
 import { DRY_RUN, EBAY_BASE } from "../utils/constants.js";
 
